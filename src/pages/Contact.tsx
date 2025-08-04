@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, MessageSquare, Send, Globe, Github, Twitter } from 'lucide-react';
+import { Mail, MessageSquare, Send, Instagram, Music, Link as LinkIcon } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,10 +13,48 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const socialLinks = [
+    { 
+      icon: LinkIcon, 
+      label: "Linktree", 
+      url: "https://linktr.ee/augeerms"
+    },
+    { 
+      icon: Music, 
+      label: "SoundCloud", 
+      url: "https://soundcloud.com/augeerms" 
+    },
+    { 
+      icon: Instagram, 
+      label: "Instagram", 
+      url: "https://www.instagram.com/augeerms" 
+    }
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setFormStatus('loading');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mgvzlbne', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Kosongkan form setelah berhasil
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,10 +86,11 @@ const Contact = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* ... sisa form tidak berubah ... */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="name" className="text-sm font-rajdhani font-medium">
-                  Identity
+                  Identity Matrix
                 </Label>
                 <Input
                   id="name"
@@ -116,12 +155,15 @@ const Contact = () => {
               <Send className="mr-2" size={16} />
               TRANSMIT MESSAGE
             </Button>
+
+            {formStatus === 'success' && <p className="text-green-400 text-sm text-center mt-4">Transmission successful! Message received.</p>}
+            {formStatus === 'error' && <p className="text-red-400 text-sm text-center mt-4">Transmission failed. Please try again.</p>}
           </form>
         </Card>
 
         {/* Contact Info */}
         <div className="space-y-8">
-          {/* Contact Methods */}
+          {/* ... bagian Direct Channels tidak berubah ... */}
           <Card className="p-6 cyber-border">
             <div className="flex items-center mb-4">
               <Mail size={24} className="text-primary mr-3" />
@@ -131,15 +173,15 @@ const Contact = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">augeerms@gmail.com</span>
+                <span className="text-muted-foreground">contact@cybersonata.net</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">YouTube: Augeerms</span>
+                <span className="text-muted-foreground">Discord: CyberSonata#2024</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">Metaverse coordinates: Cimahi.256</span>
+                <span className="text-muted-foreground">Metaverse coordinates: Neo.Tokyo.256</span>
               </div>
             </div>
           </Card>
@@ -148,12 +190,9 @@ const Contact = () => {
           <Card className="p-6 cyber-border">
             <h3 className="text-xl font-orbitron font-bold mb-4">Network Presence</h3>
             
+            {/* --- UBAH BAGIAN INI UNTUK MENAMPILKAN IKON BARU --- */}
             <div className="grid grid-cols-3 gap-4">
-              {[
-                { icon: Globe, label: "Web", url: "#" },
-                { icon: Github, label: "GitHub", url: "https://github.com/Threesionnn" },
-                { icon: Twitter, label: "Twitter", url: "#" }
-              ].map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <Button
                   key={index}
                   variant="glitch"
@@ -170,7 +209,7 @@ const Contact = () => {
             </div>
           </Card>
 
-          {/* Collaboration */}
+          {/* ... sisa komponen tidak berubah ... */}
           <Card className="p-6 cyber-border bg-gradient-to-br from-primary/5 to-accent/5">
             <h3 className="text-xl font-orbitron font-bold mb-4">
               <span className="text-glitch" data-text="COLLABORATION">
@@ -178,7 +217,7 @@ const Contact = () => {
               </span>
             </h3>
             <p className="text-muted-foreground mb-4">
-              Open to dark music collaborations, remixes, and digital art projects. 
+              Open to cyberpunk music collaborations, remixes, and digital art projects. 
               Let's create the soundtrack for tomorrow.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -193,7 +232,6 @@ const Contact = () => {
             </div>
           </Card>
 
-          {/* Response Time */}
           <Card className="p-6 cyber-border">
             <h3 className="text-xl font-orbitron font-bold mb-4">Response</h3>
             <div className="space-y-3">

@@ -19,7 +19,7 @@ const Bio = () => {
     },
     {
       year: "2022",
-      title: "The Follow Diagram",
+      title: "The Beginning",
       description: "Following the latest genres and seeking serenity within future bass music"
     },
     {
@@ -175,7 +175,7 @@ const Bio = () => {
       <div className="text-center">
         <Card className="p-8 cyber-border bg-gradient-to-r from-primary/5 to-accent/5">
           <h2 className="text-2xl font-orbitron font-bold mb-4">
-            Create and upload your chaos!
+            Listen Here
           </h2>
           <p className="text-muted-foreground mb-6">
             Experience the full catalog

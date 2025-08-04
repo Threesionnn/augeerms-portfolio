@@ -111,7 +111,7 @@ const Landing = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-orbitron font-bold text-center mb-12">
-            <span className="metallic-text">RECENT TRANSMISSIONS</span>
+            <span className="metallic-text">RECENT ANTHEM</span>
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -155,7 +155,7 @@ const Landing = () => {
           <Button variant="outline" size="lg" asChild>
             <Link to="/bio">
               <User className="mr-2" />
-              DISCOVER ARTIST
+              ABOUT ME
             </Link>
           </Button>
         </div>
