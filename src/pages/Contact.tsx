@@ -82,7 +82,7 @@ const Contact = () => {
         <Card className="p-8 cyber-border">
           <div className="flex items-center mb-6">
             <MessageSquare size={24} className="text-primary mr-3" />
-            <h2 className="text-2xl font-orbitron font-bold">Send Transmission</h2>
+            <h2 className="text-2xl font-orbitron font-bold">Send</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -90,7 +90,7 @@ const Contact = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="name" className="text-sm font-rajdhani font-medium">
-                  Identity Matrix
+                  Name
                 </Label>
                 <Input
                   id="name"
@@ -105,7 +105,7 @@ const Contact = () => {
               </div>
               <div>
                 <Label htmlFor="email" className="text-sm font-rajdhani font-medium">
-                  Neural Link
+                  Email
                 </Label>
                 <Input
                   id="email"
@@ -122,7 +122,7 @@ const Contact = () => {
 
             <div>
               <Label htmlFor="subject" className="text-sm font-rajdhani font-medium">
-                Transmission Header
+                Subject
               </Label>
               <Input
                 id="subject"
@@ -173,15 +173,15 @@ const Contact = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">contact@cybersonata.net</span>
+                <span className="text-muted-foreground">augeerms@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">Discord: CyberSonata#2024</span>
+                <span className="text-muted-foreground">Youtube: Augeerms</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-primary rounded-full neon-glow" />
-                <span className="text-muted-foreground">Metaverse coordinates: Neo.Tokyo.256</span>
+                <span className="text-muted-foreground">Cimahi City</span>
               </div>
             </div>
           </Card>
@@ -217,7 +217,7 @@ const Contact = () => {
               </span>
             </h3>
             <p className="text-muted-foreground mb-4">
-              Open to cyberpunk music collaborations, remixes, and digital art projects. 
+              Open tomusic collaborations, remixes, and digital art projects. 
               Let's create the soundtrack for tomorrow.
             </p>
             <div className="flex flex-wrap gap-2">
